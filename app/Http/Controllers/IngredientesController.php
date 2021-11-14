@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\ingrediente;
+use Facade\FlareClient\Http\Client;
 use Illuminate\Http\Request;
 
-class IngredientesController extends Controller
+class ingredientesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,6 +16,9 @@ class IngredientesController extends Controller
     public function index()
     {
         //
+        $ingredientes=Ingrediente::orderBy('id','asc')->get();
+        //return view('ingredientes.index',compact('ingredientes'));
+        return $ingredientes;
     }
 
     /**
@@ -24,6 +29,7 @@ class IngredientesController extends Controller
     public function create()
     {
         //
+        return view('ingredientes.create');
     }
 
     /**
@@ -35,6 +41,13 @@ class IngredientesController extends Controller
     public function store(Request $request)
     {
         //
+        $ingrediente=new ingrediente();
+        $ingrediente->nomb=$request->get('nomb');
+        $ingrediente->UM=$request->get('UM');
+        $ingrediente->precio=$request->get('precio');
+        $ingrediente->stock_id=$request->get('stock_id');        
+        $ingrediente->save();
+        return redirect()->route('ingredientes.show',['ingrediente'=>$ingrediente->id]);
     }
 
     /**
@@ -46,6 +59,9 @@ class IngredientesController extends Controller
     public function show($id)
     {
         //
+
+        $ingrediente=ingrediente::find($id);
+        return view('ingredientes.show', compact('ingrediente'));
     }
 
     /**
@@ -57,6 +73,8 @@ class IngredientesController extends Controller
     public function edit($id)
     {
         //
+        $ingrediente=ingrediente::find($id);
+        return view('ingredientes.edit',compact('ingrediente'));
     }
 
     /**
@@ -69,6 +87,16 @@ class IngredientesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $ingrediente=ingrediente::where('id',$id)->first();
+        $ingrediente->nomb=$request->get('nomb');
+        $ingrediente->UM=$request->get('UM');
+        $ingrediente->precio=$request->get('precio');
+        $ingrediente->stock_id=$request->get('stock_id');  
+        $ingrediente->save();
+        
+        
+        return redirect()->route('ingredientes.show',$ingrediente);
+       // return 'saved';
     }
 
     /**
@@ -80,5 +108,9 @@ class IngredientesController extends Controller
     public function destroy($id)
     {
         //
+        $ingrediente=ingrediente::where('id',$id)->first();
+        $ingrediente->delete();
+
+        return redirect()->route('ingredientes.index');
     }
 }
