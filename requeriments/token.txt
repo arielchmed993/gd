@@ -22,5 +22,21 @@ git push -u origin master
 
 TOKEN
 
->>>>>>> 92c6ceb55a48840f6f4e956e8502e2ecf4b073ca
-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
+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
+
+----actualizar
+
+git stash
+git pull
+git stash pop
+
+git reset --hard
+git pull
+
+git add .
+git commit -m "xxx"
+git push origin master 
+
+
+arielchmed993
+93102634261ariel1993
