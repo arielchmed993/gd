@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 git init
 git add .
 git commit -m "gd"
@@ -9,4 +10,17 @@ git push -u origin master
 
 TOKEN
 
+=======
+git init
+git add .
+git commit -m "gd"
+git branch -M main
+git remote add origin https://github.com/arielchmed993/gd.git
+git push -u origin master
+
+
+
+TOKEN
+
+>>>>>>> 92c6ceb55a48840f6f4e956e8502e2ecf4b073ca
 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
