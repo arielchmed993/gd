@@ -17,6 +17,9 @@ class CreateIngredienteRecetaPivotTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
 
+            //$table->decimal('precio',8,2);
+            //$table->decimal('peso',8,2);
+
             $table->unsignedBigInteger('ingrediente_id')->unsigned();
             $table->unsignedBigInteger('receta_id')->unsigned();
             

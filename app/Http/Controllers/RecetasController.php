@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\receta;
+use Facade\FlareClient\Http\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class RecetasController extends Controller
+class recetasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,14 @@ class RecetasController extends Controller
      */
     public function index()
     {
-        //
+               
+        $recetas = DB::table('recetas')
+        ->join('productos', 'productos.receta_id', '=', 'recetas.id')      
+        ->select('recetas.id','productos.nomb','recetas.prep')
+       ->get();  
+
+        return view('recetas.index',compact('recetas'));
+
     }
 
     /**
@@ -24,6 +34,7 @@ class RecetasController extends Controller
     public function create()
     {
         //
+        return view('recetas.create');
     }
 
     /**
@@ -35,6 +46,12 @@ class RecetasController extends Controller
     public function store(Request $request)
     {
         //
+        $receta=new receta();
+        $receta->nomb=$request->get('prep');
+        $receta->CI=$request->get('peso');
+        $receta->dir=$request->get('caloria');      
+        $receta->save();
+        return redirect()->route('recetas.show',['receta'=>$receta->id]);
     }
 
     /**
@@ -46,6 +63,9 @@ class RecetasController extends Controller
     public function show($id)
     {
         //
+
+        $receta=receta::find($id);
+        return view('recetas.show', compact('receta'));
     }
 
     /**
@@ -57,6 +77,8 @@ class RecetasController extends Controller
     public function edit($id)
     {
         //
+        $receta=receta::find($id);
+        return view('recetas.edit',compact('receta'));
     }
 
     /**
@@ -69,6 +91,14 @@ class RecetasController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $receta=receta::where('id',$id)->first();
+        $receta->nomb=$request->get('prep');
+        $receta->CI=$request->get('peso');
+        $receta->dir=$request->get('caloria');    
+        $receta->save();        
+        
+        return redirect()->route('recetas.show',$receta);
+       // return 'saved';
     }
 
     /**
@@ -80,5 +110,9 @@ class RecetasController extends Controller
     public function destroy($id)
     {
         //
+        $receta=receta::where('id',$id)->first();
+        $receta->delete();
+
+        return redirect()->route('recetas.index');
     }
 }
