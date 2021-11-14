@@ -13,5 +13,5 @@
         Email:<input type="text" name="email">
         <button type="submit" class="">Guardar</button>
     </form>
-
+    <a href="{{ route('clientes.index') }}">Cancelar</a></br>
 @endsection

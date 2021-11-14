@@ -1,0 +1,12 @@
+git init
+git add .
+git commit -m "gd"
+git branch -M main
+git remote add origin https://github.com/arielchmed993/gd.git
+git push -u origin master
+
+
+
+TOKEN
+
+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

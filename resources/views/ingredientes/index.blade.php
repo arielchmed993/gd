@@ -8,12 +8,12 @@
         <th>Acciones</th>
     </tr>
 <tbody>
-    @foreach ($clientes as $cliente)
+    @foreach ($ingredientes as $ingrediente)
     <tr>
-        <td>{{$cliente->id}}</td>
-        <td>{{$cliente->nomb}}</td>
+        <td>{{$ingrediente->id}}</td>
+        <td>{{$ingrediente->nomb}}</td>
         <td>
-        <a href="{{route('clientes.show',['cliente'=>$cliente->id])}}">Ver más...</a>
+        <a href="{{route('ingredientes.show',['ingrediente'=>$ingrediente->id])}}">Ver más...</a>
         </td>
     </tr>
     @endforeach
@@ -22,6 +22,6 @@
 </tbody>
 </table>
 
-<a href="{{route('clientes.create')}}">Nuevo Cliente</a></br>
+<a href="{{route('ingredientes.create')}}">Nuevo ingrediente</a></br>
 <a href="/">Inicio</a></br>
 @endsection

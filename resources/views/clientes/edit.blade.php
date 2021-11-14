@@ -13,4 +13,5 @@
     Email:<input type="text" name="email"value="{{$cliente->email}}"></br></br>
     <button type="submit" class="">Actualizar</button>
 </form>
+<a href="{{ route('clientes.index') }}">Cancelar</a></br>
 @endsection
