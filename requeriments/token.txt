@@ -22,7 +22,7 @@ git push -u origin master
 
 TOKEN
 
-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
+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
 
 ----actualizar
 
