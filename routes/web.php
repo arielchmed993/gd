@@ -21,3 +21,6 @@ Route::resource('clientes','ClientesController');
 Route::resource('recetas','RecetasController');
 Route::resource('productos','ProductosController');
 Route::resource('ingredientes','IngredientesController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

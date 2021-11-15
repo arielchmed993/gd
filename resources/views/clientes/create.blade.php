@@ -11,7 +11,7 @@
         Dir:<input type="text" name="dir">
         Telef:<input type="text" name="telef">
         Email:<input type="text" name="email">
-        <button type="submit" class="">Guardar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
-    <a href="{{ route('clientes.index') }}">Cancelar</a></br>
+    <a href="{{ route('clientes.index') }}" class="btn btn-danger">Cancelar</a></br>
 @endsection

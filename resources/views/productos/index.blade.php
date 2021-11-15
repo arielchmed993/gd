@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if ($productos->isNotEmpty())
 <table >
     <tr>
         <th>Id</th>
@@ -21,6 +22,10 @@
 
 </tbody>
 </table>
+@else
+    <p>La colección está vacía.</p>
+@endif
+
 <a href="{{route('productos.create')}}">Nuevo Producto</a></br>
 <a href="/">Inicio</a></br>
 @endsection

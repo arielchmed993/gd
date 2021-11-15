@@ -11,7 +11,7 @@
     Dir:<input type="text" name="dir" value="{{$cliente->dir}}"></br></br>
     Telef:<input type="text" name="telef" value="{{$cliente->telef}}"></br></br>
     Email:<input type="text" name="email"value="{{$cliente->email}}"></br></br>
-    <button type="submit" class="">Actualizar</button>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
 </form>
-<a href="{{ route('clientes.index') }}">Cancelar</a></br>
+<a href="{{ route('clientes.index') }}" class="btn btn-danger">Cancelar</a></br>
 @endsection

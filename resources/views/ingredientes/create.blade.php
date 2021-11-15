@@ -12,5 +12,5 @@
         stock_id:<input type="text" name="stock_id">
         <button type="submit" class="">Guardar</button>
     </form>
-    <a href="{{ route('ingredientes.index') }}">Cancelar</a></br>
+    <a href="{{ route('ingredientes.index') }}" class="btn btn-danger">Cancelar</a></br>
 @endsection

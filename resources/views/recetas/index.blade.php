@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if ($recetas->isNotEmpty())
 <table >
     <tr>
         <th>Id</th>
@@ -23,6 +24,10 @@
 
 </tbody>
 </table>
+@else
+    <p>La colección está vacía.</p>
+@endif
+
 
 <a href="{{route('recetas.create')}}">Nuevo receta</a></br>
 <a href="/">Inicio</a></br>
