@@ -8,7 +8,7 @@
         
         Nombre:<input type="text" name="nomb">
         Receta_id:<input type="text" name="receta_id">       
-        <button type="submit" class="">Guardar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
-    <a href="{{ route('productos.index') }}">Cancelar</a></br>
+    <a href="{{ route('productos.index') }}" class="btn btn-danger">Cancelar</a></br>
 @endsection

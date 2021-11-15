@@ -10,7 +10,7 @@
     Peso:<input type="text" name="CI" value="{{$receta->peso}}"></br></br>
     Calorias:<input type="text" name="dir" value="{{$receta->caloria}}"></br></br>
    
-    <button type="submit" class="">Actualizar</button>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
 </form>
-<a href="{{ route('recetas.index') }}">Cancelar</a></br>
+<a href="{{ route('recetas.index') }}" class="btn btn-danger">Cancelar</a></br>
 @endsection

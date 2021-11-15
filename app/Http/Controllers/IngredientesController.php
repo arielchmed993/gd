@@ -17,8 +17,8 @@ class ingredientesController extends Controller
     {
         //
         $ingredientes=Ingrediente::orderBy('id','asc')->get();
-        //return view('ingredientes.index',compact('ingredientes'));
-        return $ingredientes;
+        return view('ingredientes.index',compact('ingredientes'));
+        //return $ingredientes;
     }
 
     /**

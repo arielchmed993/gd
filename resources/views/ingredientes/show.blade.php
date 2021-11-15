@@ -6,8 +6,6 @@
 <h2>UM: {{$ingrediente->UM}}</h2>
 <h2>Precio:{{$ingrediente->precio}}</h2>
 
-
-
 <a href="/ingredientes/{{$ingrediente->id}}/edit">Editar</a></br>
 <a href="{{ route('ingredientes.index') }}">Atrás</a></br>
 <a href="/">Home</a></br>

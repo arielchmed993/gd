@@ -2,13 +2,15 @@
 
 @section('content')
 @if ($recetas->isNotEmpty())
-<table >
+<table class="table">
+    <thead class="thead-dark">
     <tr>
         <th>Id</th>
         <th>Nombre</th>
         <th>Preparación</th>
         <th>Acciones</th>
     </tr>
+    </thead>
 <tbody>
     @foreach ($recetas as $receta)
     <tr>
@@ -28,7 +30,6 @@
     <p>La colección está vacía.</p>
 @endif
 
-
-<a href="{{route('recetas.create')}}">Nuevo receta</a></br>
-<a href="/">Inicio</a></br>
+<a href="{{route('recetas.create')}}" class="btn btn-success">Nueva receta</a></br>
+<a href="/" class="btn btn-primary">Inicio</a></br>
 @endsection

@@ -2,13 +2,14 @@
 
 @section('content')
 @if ($ingredientes->isNotEmpty())
-<table >
+<table class="table">
+    <thead class="thead-dark">
     <tr>
         <th>Id</th>
         <th>Nombre</th>
         <th>Acciones</th>
     </tr>
-    
+    </thead>
 <tbody>
     @foreach ($ingredientes as $ingrediente)
     <tr>
@@ -27,7 +28,6 @@
     <p>La colección está vacía.</p>
 @endif
 
-
-<a href="{{route('ingredientes.create')}}">Nuevo ingrediente</a></br>
-<a href="/">Inicio</a></br>
+<a href="{{route('ingredientes.create')}}" class="btn btn-success">Nuevo ingrediente</a></br>
+<a href="/" class="btn btn-primary">Inicio</a></br>
 @endsection

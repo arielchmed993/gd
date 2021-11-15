@@ -10,7 +10,7 @@
     UM:<input type="text" name="UM" value="{{$ingrediente->UM}}"></br></br>
     Precio:<input type="text" name="precio" value="{{$ingrediente->precio}}"></br></br>   
     stock_id:<input type="text" name="stock_id" value="{{$ingrediente->stock_id}}"></br></br>  
-    <button type="submit" class="">Actualizar</button>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
 </form>
-<a href="{{ route('ingredientes.index') }}">Cancelar</a></br>
+<a href="{{ route('ingredientes.index') }}" class="btn btn-danger">Cancelar</a></br>
 @endsection

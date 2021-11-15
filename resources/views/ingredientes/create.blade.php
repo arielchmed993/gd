@@ -10,7 +10,7 @@
         UM:<input type="text" name="UM">
         Precio:<input type="text" name="precio">
         stock_id:<input type="text" name="stock_id">
-        <button type="submit" class="">Guardar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
     <a href="{{ route('ingredientes.index') }}" class="btn btn-danger">Cancelar</a></br>
 @endsection
