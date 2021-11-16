@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Stock extends Model
 {
     //
-    protected $table='stoks';
+    protected $table='stocks';
 
     //Stock One to Many Ingrediente
     public function ingredientes()

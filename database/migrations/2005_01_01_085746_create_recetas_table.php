@@ -24,7 +24,7 @@ class CreateRecetasTable extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('nomb');
+            $table->string('nomb')->unique();
 
             //Foreign Keys    
             $table->unsignedBigInteger('receta_id');  

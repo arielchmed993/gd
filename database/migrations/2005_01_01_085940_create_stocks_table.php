@@ -25,8 +25,9 @@ class CreateStocksTable extends Migration
             $table->string('nomb');
             $table->string('UM');
             $table->decimal('precio',8,2);
-           $table->decimal('precioU',8,2);
-           $table->decimal('peso',8,2);
+          
+            $table->decimal('precioU',8,2);
+           $table->decimal('cant',8,2);
 
             //Foreign Keys    
             $table->unsignedBigInteger('stock_id');  
