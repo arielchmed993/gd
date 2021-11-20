@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ProductosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
       /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,8 @@ class ProductosController extends Controller
     public function index()
     {
         //
-        $productos=Producto::orderBy('id','asc')->get();
+        $productos=Producto::orderBy('id','asc')->paginate(7);
+        //->get();
         return view('productos.index',compact('productos'));
     }
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ingrediente extends Model
 {
     //
-    protected $table='fechas';
+    protected $table='ingredientes';
 
     //Ingrediente Many to One Stock
     public function stock()

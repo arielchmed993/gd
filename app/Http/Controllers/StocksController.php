@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\stock;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class StocksController extends Controller
+class stocksController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,12 @@ class StocksController extends Controller
      */
     public function index()
     {
-        //
+               
+        $stocks=stock::orderBy('id','asc')->paginate(7);
+        //->get();
+
+        return view('stocks.index',compact('stocks'));
+
     }
 
     /**
@@ -24,6 +35,7 @@ class StocksController extends Controller
     public function create()
     {
         //
+        return view('stocks.create');
     }
 
     /**
@@ -35,6 +47,11 @@ class StocksController extends Controller
     public function store(Request $request)
     {
         //
+        $stock=new stock();
+        $stock->almacen=$request->get('almacen');
+        
+        $stock->save();
+        return redirect()->route('stocks.show',['stock'=>$stock->id]);
     }
 
     /**
@@ -46,6 +63,9 @@ class StocksController extends Controller
     public function show($id)
     {
         //
+
+        $stock=stock::find($id);
+        return view('stocks.show', compact('stock'));
     }
 
     /**
@@ -57,6 +77,8 @@ class StocksController extends Controller
     public function edit($id)
     {
         //
+        $stock=stock::find($id);
+        return view('stocks.edit',compact('stock'));
     }
 
     /**
@@ -69,6 +91,13 @@ class StocksController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $stock=stock::where('id',$id)->first();
+        $stock->almacen=$request->get('almacen');
+         
+        $stock->save();        
+        
+        return redirect()->route('stocks.show',$stock);
+       // return 'saved';
     }
 
     /**
@@ -80,5 +109,9 @@ class StocksController extends Controller
     public function destroy($id)
     {
         //
+        $stock=stock::where('id',$id)->first();
+        $stock->delete();
+
+        return redirect()->route('stocks.index');
     }
 }

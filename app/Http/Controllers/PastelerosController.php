@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\pastelero;
+use Facade\FlareClient\Http\Client;
 use Illuminate\Http\Request;
 
-class PastelerosController extends Controller
+
+
+class pastelerosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +22,11 @@ class PastelerosController extends Controller
     public function index()
     {
         //
+        $pasteleros=pastelero::orderBy('id','asc')->paginate(7);
+        //->get();
+
+        return view('pasteleros.index',compact('pasteleros'));
+
     }
 
     /**
@@ -24,6 +37,7 @@ class PastelerosController extends Controller
     public function create()
     {
         //
+        return view('pasteleros.create');
     }
 
     /**
@@ -35,6 +49,12 @@ class PastelerosController extends Controller
     public function store(Request $request)
     {
         //
+        $pastelero=new pastelero();
+        $pastelero->nomb=$request->get('nomb');
+        $pastelero->CI=$request->get('CI'); 
+        $pastelero->categoria_id=$request->get('categoria_id');           
+        $pastelero->save();
+        return redirect()->route('pasteleros.show',['pastelero'=>$pastelero->id]);
     }
 
     /**
@@ -46,6 +66,9 @@ class PastelerosController extends Controller
     public function show($id)
     {
         //
+
+        $pastelero=pastelero::find($id);
+        return view('pasteleros.show', compact('pastelero'));
     }
 
     /**
@@ -57,6 +80,8 @@ class PastelerosController extends Controller
     public function edit($id)
     {
         //
+        $pastelero=pastelero::find($id);
+        return view('pasteleros.edit',compact('pastelero'));
     }
 
     /**
@@ -69,6 +94,15 @@ class PastelerosController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $pastelero=pastelero::where('id',$id)->first();
+        $pastelero->nomb=$request->get('nomb');
+        $pastelero->CI=$request->get('CI');
+        $pastelero->categoria_id=$request->get('categoria_id');      
+        $pastelero->save();
+        
+        
+        return redirect()->route('pasteleros.show',$pastelero);
+       // return 'saved';
     }
 
     /**
@@ -80,5 +114,9 @@ class PastelerosController extends Controller
     public function destroy($id)
     {
         //
+        $pastelero=pastelero::where('id',$id)->first();
+        $pastelero->delete();
+
+        return redirect()->route('pasteleros.index');
     }
 }

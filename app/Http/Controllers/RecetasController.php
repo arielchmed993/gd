@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\receta;
-use Facade\FlareClient\Http\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class recetasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +23,8 @@ class recetasController extends Controller
         $recetas = DB::table('recetas')
         ->join('productos', 'productos.receta_id', '=', 'recetas.id')      
         ->select('recetas.id','productos.nomb','recetas.prep')
-       ->get();  
+        ->paginate(7);
+        //->get();
 
         return view('recetas.index',compact('recetas'));
 

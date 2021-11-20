@@ -27,7 +27,8 @@
 @else
     <p>La colección está vacía.</p>
 @endif
-
+{{ $productos->links() }}
 <a href="{{route('productos.create')}}" class="btn btn-success">Nuevo producto</a></br>
 <a href="/" class="btn btn-primary">Inicio</a></br>
+<a href="{{ route('recetas.index') }}" class="btn btn-warning">Recetas</a>   
 @endsection

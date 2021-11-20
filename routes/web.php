@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,11 @@ Route::resource('clientes','ClientesController');
 Route::resource('recetas','RecetasController');
 Route::resource('productos','ProductosController');
 Route::resource('ingredientes','IngredientesController');
-Auth::routes();
+Route::resource('stocks','StocksController');
+Route::resource('categorias','CategoriasController');
+Route::resource('pasteleros','PastelerosController');
+Route::resource('pedidos','PedidosController');
 
+
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\pedido;
+use Facade\FlareClient\Http\Client;
 use Illuminate\Http\Request;
 
-class PedidosController extends Controller
+
+
+class pedidosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +22,11 @@ class PedidosController extends Controller
     public function index()
     {
         //
+        $pedidos=pedido::orderBy('id','asc')->paginate(7);
+        //->get();
+
+        return view('pedidos.index',compact('pedidos'));
+
     }
 
     /**
@@ -24,6 +37,7 @@ class PedidosController extends Controller
     public function create()
     {
         //
+        return view('pedidos.create');
     }
 
     /**
@@ -35,6 +49,16 @@ class PedidosController extends Controller
     public function store(Request $request)
     {
         //
+        $pedido=new pedido();        
+        $pedido->fecha=$request->get('fecha');
+        $pedido->fechaEmp=$request->get('fechaEmp');
+        $pedido->dir=$request->get('dir');
+        $pedido->precio=$request->get('precio');
+        $pedido->hrEmp=$request->get('hrEmp');
+        $pedido->hrEmp=$request->get('pastelero_id');
+        $pedido->hrEmp=$request->get('cliente_id');
+        $pedido->save();
+        return redirect()->route('pedidos.show',['pedido'=>$pedido->id]);
     }
 
     /**
@@ -46,6 +70,9 @@ class PedidosController extends Controller
     public function show($id)
     {
         //
+
+        $pedido=pedido::find($id);
+        return view('pedidos.show', compact('pedido'));
     }
 
     /**
@@ -57,6 +84,8 @@ class PedidosController extends Controller
     public function edit($id)
     {
         //
+        $pedido=pedido::find($id);
+        return view('pedidos.edit',compact('pedido'));
     }
 
     /**
@@ -69,6 +98,19 @@ class PedidosController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $pedido=pedido::where('id',$id)->first();       
+        $pedido->fecha=$request->get('fecha');
+        $pedido->fechaEmp=$request->get('fechaEmp');
+        $pedido->dir=$request->get('dir');
+        $pedido->precio=$request->get('precio');
+        $pedido->hrEmp=$request->get('hrEmp');
+        $pedido->hrEmp=$request->get('pastelero_id');
+        $pedido->hrEmp=$request->get('cliente_id');
+        $pedido->save();
+        
+        
+        return redirect()->route('pedidos.show',$pedido);
+       // return 'saved';
     }
 
     /**
@@ -80,5 +122,9 @@ class PedidosController extends Controller
     public function destroy($id)
     {
         //
+        $pedido=pedido::where('id',$id)->first();
+        $pedido->delete();
+
+        return redirect()->route('pedidos.index');
     }
 }

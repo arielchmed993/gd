@@ -16,7 +16,7 @@ class CreatePastelerosTable extends Migration
         Schema::create('pasteleros', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('ci');
+            $table->string('CI');
             $table->string('nomb');
 
             $table->unsignedBigInteger('categoria_id');    

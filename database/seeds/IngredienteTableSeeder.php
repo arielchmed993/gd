@@ -18,7 +18,8 @@ class IngredienteTableSeeder extends Seeder
         $ingrediente->UM="Gramos (g)";
         $ingrediente->precio=15;
         $ingrediente->cant=1000;
-        $ingrediente->precioU=($ingrediente->precio)/($ingrediente->cant);
+        $ingrediente->precioU=15/1000;
+        $ingrediente->stock_id=1;
         $ingrediente->save();
     }
 }

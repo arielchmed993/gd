@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\categoria;
+use Facade\FlareClient\Http\Client;
 use Illuminate\Http\Request;
 
-class CategoriasController extends Controller
+class categoriasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +20,11 @@ class CategoriasController extends Controller
     public function index()
     {
         //
+        $categorias=categoria::orderBy('id','asc')->paginate(7);
+        //->get();
+
+        return view('categorias.index',compact('categorias'));
+
     }
 
     /**
@@ -24,6 +35,7 @@ class CategoriasController extends Controller
     public function create()
     {
         //
+        return view('categorias.create');
     }
 
     /**
@@ -35,6 +47,11 @@ class CategoriasController extends Controller
     public function store(Request $request)
     {
         //
+        $categoria=new categoria();
+        $categoria->nomb=$request->get('categ');
+       
+        $categoria->save();
+        return redirect()->route('categorias.show',['categoria'=>$categoria->id]);
     }
 
     /**
@@ -46,6 +63,9 @@ class CategoriasController extends Controller
     public function show($id)
     {
         //
+
+        $categoria=categoria::find($id);
+        return view('categorias.show', compact('categoria'));
     }
 
     /**
@@ -57,6 +77,8 @@ class CategoriasController extends Controller
     public function edit($id)
     {
         //
+        $categoria=categoria::find($id);
+        return view('categorias.edit',compact('categoria'));
     }
 
     /**
@@ -69,6 +91,14 @@ class CategoriasController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $categoria=categoria::where('id',$id)->first();
+        $categoria->nomb=$request->get('categ');
+     
+        $categoria->save();
+        
+        
+        return redirect()->route('categorias.show',$categoria);
+       // return 'saved';
     }
 
     /**
@@ -80,5 +110,9 @@ class CategoriasController extends Controller
     public function destroy($id)
     {
         //
+        $categoria=categoria::where('id',$id)->first();
+        $categoria->delete();
+
+        return redirect()->route('categorias.index');
     }
 }

@@ -86,14 +86,9 @@
 
                 <div class="links">
                     <a href="{{ route('clientes.index') }}">Clientes</a>
-                    <a href="{{ route('productos.index') }}">Productos</a>
-                    <a href="{{ route('recetas.index') }}">Recetas</a>
-                    <a href="{{ route('ingredientes.index') }}">Ingredientes</a>
-              <!--      <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>-->
+                    <a href="{{ route('productos.index') }}">Productos</a>                  
+                    <a href="{{ route('pasteleros.index') }}">Pasteleros</a>
+                    <a href="{{ route('pedidos.index') }}">Pedidos</a>  
                 </div>
             </div>
         </div>

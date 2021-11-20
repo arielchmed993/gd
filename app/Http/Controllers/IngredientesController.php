@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ingredientesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,8 @@ class ingredientesController extends Controller
     public function index()
     {
         //
-        $ingredientes=Ingrediente::orderBy('id','asc')->get();
+        $ingredientes=Ingrediente::orderBy('id','asc')->paginate(7);
+        //->get();
         return view('ingredientes.index',compact('ingredientes'));
         //return $ingredientes;
     }
@@ -110,7 +115,6 @@ class ingredientesController extends Controller
         //
         $ingrediente=ingrediente::where('id',$id)->first();
         $ingrediente->delete();
-
         return redirect()->route('ingredientes.index');
     }
 }

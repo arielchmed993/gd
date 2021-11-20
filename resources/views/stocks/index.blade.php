@@ -1,22 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-@if ($ingredientes->isNotEmpty())
+@if ($stocks->isNotEmpty())
 <table class="table">
     <thead class="thead-dark">
     <tr>
         <th>Id</th>
-        <th>Nombre</th>
+        <th>Almacén</th>
         <th>Acciones</th>
     </tr>
     </thead>
 <tbody>
-    @foreach ($ingredientes as $ingrediente)
+    @foreach ($stocks as $stock)
     <tr>
-        <td>{{$ingrediente->id}}</td>
-        <td>{{$ingrediente->nomb}}</td>
+        <td>{{$stock->id}}</td>
+        <td>{{$stock->almacen}}</td>
         <td>
-        <a href="{{route('ingredientes.show',['ingrediente'=>$ingrediente->id])}}">Ver más...</a>
+        <a href="{{route('stocks.show',['stock'=>$stock->id])}}">Ver más...</a>
         </td>
     </tr>
     @endforeach
@@ -27,8 +27,8 @@
 @else
     <p>La colección está vacía.</p>
 @endif
-{{ $ingredientes->links() }}
-<a href="{{route('ingredientes.create')}}" class="btn btn-success">Nuevo ingrediente</a></br>
+{{ $stocks->links() }}
+<a href="{{route('stocks.create')}}" class="btn btn-success">Nuevo stock</a></br>
 <a href="/" class="btn btn-primary">Inicio</a></br>
 <a href="{{ route('recetas.index') }}" class="btn btn-warning">Recetas</a>   
 @endsection
