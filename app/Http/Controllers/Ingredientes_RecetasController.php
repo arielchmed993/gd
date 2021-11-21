@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
+use App\IngredienteReceta;
+use App\Receta;
+use App\Ingrediente;
+//use App\Producto;
 
 class Ingredientes_RecetasController extends Controller
 {
@@ -18,6 +24,22 @@ class Ingredientes_RecetasController extends Controller
     public function index()
     {
         //
+       
+        $costo_cant = DB::table('ingredientes_recetas')         
+        ->join('ingredientes', 'ingredientes.id', '=', 'ingredientes_recetas.ingrediente_id')         
+        ->join('recetas', 'recetas.id', '=', 'ingredientes_recetas.receta_id')  
+        ->join('productos', 'productos.receta_id', '=', 'recetas.id')  
+      
+        ->select('ingredientes_recetas.id','productos.nomb','ingredientes_recetas.cant','ingredientes_recetas.precio')
+        ->orderBy('ingredientes_recetas.cant','asc')
+        ->get();
+        
+        $Tprecio=$costo_cant->sum('precio');
+        $Tcant=$costo_cant->sum('cant');   
+        
+
+        return view('ingredientes_recetas.index',compact('costo_cant','Tprecio','Tcant'));
+     
     }
 
     /**
@@ -27,7 +49,10 @@ class Ingredientes_RecetasController extends Controller
      */
     public function create()
     {
-        //
+      
+        $recetas=Receta::all();
+        $ingredientes=Ingrediente::all();
+        return view('ingredientes_recetas.create',compact('recetas','ingredientes'));      
     }
 
     /**
@@ -39,6 +64,13 @@ class Ingredientes_RecetasController extends Controller
     public function store(Request $request)
     {
         //
+        $ingrediente_receta=new IngredienteReceta();
+        $ingrediente_receta=request()->get('precio');
+        $ingrediente_receta=request()->get('cant');
+        $ingrediente_receta=request()->get('ingrediente_id');
+        $ingrediente_receta=request()->get('receta_id');
+        $ingrediente_receta->save();
+        return redirect()->route('ingredientes_recetas.show',['ingredientes_receta'=>$ingrediente_receta->id]);
     }
 
     /**
@@ -50,6 +82,7 @@ class Ingredientes_RecetasController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**

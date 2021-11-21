@@ -22,7 +22,7 @@ class recetasController extends Controller
                
         $recetas = DB::table('recetas')
         ->join('productos', 'productos.receta_id', '=', 'recetas.id')      
-        ->select('recetas.id','productos.nomb','recetas.prep')
+        ->select('productos.id','productos.nomb','recetas.prep')
         ->paginate(7);
         //->get();
 

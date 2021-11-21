@@ -8,7 +8,10 @@ class Receta extends Model
 {
     //
     protected $table='recetas';
-
+    public $timestamps=false;
+    protected $fillable = [
+        'id','prep', 'peso', 'caloria',
+    ];
     //Receta  One to Many Producto
     public function productos()
     {

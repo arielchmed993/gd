@@ -26,7 +26,7 @@ Route::resource('stocks','StocksController');
 Route::resource('categorias','CategoriasController');
 Route::resource('pasteleros','PastelerosController');
 Route::resource('pedidos','PedidosController');
-
+Route::resource('ingredientes_recetas','Ingredientes_RecetasController');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

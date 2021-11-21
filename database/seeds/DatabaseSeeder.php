@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
      factory(App\Pastelero::class,10)->create();
 
      factory(App\Pedido::class,100)->create();
-     
+     factory(App\IngredienteReceta::class,100)->create();
     }
 }
