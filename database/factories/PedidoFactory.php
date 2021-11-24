@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Pedido::class, function (Faker $faker) {
     return [
         //
-        'fecha' => $faker->date(),
+        'fecha' => $faker->date('Y-m-d',$min=time()),
         'fechaEmp' => $faker->date(),
         'dir' => $faker->address(),
         'precio' => $faker->numberBetween(100,500),

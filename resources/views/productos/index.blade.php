@@ -7,7 +7,7 @@
     <tr>
         <th>Id</th>
         <th>Nombre</th>
-        <th>Acciones</th>
+        <th colspan="3">Acciones</th>
     </tr>
     </thead>
 <tbody>
@@ -16,7 +16,17 @@
         <td>{{$producto->id}}</td>
         <td>{{$producto->nomb}}</td>
         <td>
-        <a href="{{route('productos.show',['producto'=>$producto->id])}}">Ver más...</a>
+        <a href="{{route('productos.show',['producto'=>$producto->id])}}">Detalles</a>
+        </td>
+        <td>
+            <a href="/productos/{{$producto->id}}/edit" >Editar</a>
+        </td>
+        <td>
+            <form action="{{ route('productos.destroy',$producto->id) }}" method="POST">
+                {{ csrf_field() }}
+                @method('DELETE')
+            <button class="a" type="submit" >Borrar</button>
+            </form>
         </td>
     </tr>
     @endforeach

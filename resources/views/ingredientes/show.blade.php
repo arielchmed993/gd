@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Nombre: {{$ingrediente->nomb}}</h1>
+<h1>Nombre: {{$ingrediente->nombI}}</h1>
 <h2>UM: {{$ingrediente->UM}}</h2>
 <h2>Precio:{{$ingrediente->precio}}</h2>
 

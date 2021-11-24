@@ -6,9 +6,10 @@
     <form action="{{ route('ingredientes.store') }}" method="POST">
         {{ csrf_field() }}
         
-        Nombre:<input type="text" name="nomb">
+        Nombre:<input type="text" name="nombI">
         UM:<input type="text" name="UM">
-        Precio:<input type="text" name="precio">
+        Precio:<input type="number" name="precio">
+        Cantidad:<input type="number" name="cant">
         stock_id:<input type="text" name="stock_id">
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>

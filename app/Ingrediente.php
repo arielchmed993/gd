@@ -17,4 +17,18 @@ class Ingrediente extends Model
     {
         return $this->hasMany(Ingrediente::class);
     }
+
+    public function precioUnitario($p,$c)
+    {
+        $result=0;
+        if($c==0)
+        {
+            $result=0;
+        }
+        else
+        {
+            $result=$p/$c;
+        }
+        return $result;
+    }
 }

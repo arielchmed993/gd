@@ -88,8 +88,7 @@
                     <a href="{{ route('clientes.index') }}">Clientes</a>
                     <a href="{{ route('productos.index') }}">Productos</a>                  
                     <a href="{{ route('pasteleros.index') }}">Pasteleros</a>
-                    <a href="{{ route('pedidos.index') }}">Pedidos</a>  
-                    <a href="{{ route('ingredientes_recetas.index') }}">Costo Recetas</a>  
+                    <a href="{{ route('pedidos.index') }}">Pedidos</a>                     
                 </div>
             </div>
         </div>

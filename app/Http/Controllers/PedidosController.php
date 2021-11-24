@@ -22,7 +22,7 @@ class pedidosController extends Controller
     public function index()
     {
         //
-        $pedidos=pedido::orderBy('id','asc')->paginate(7);
+        $pedidos=pedido::orderBy('fecha','desc')->paginate(7);
         //->get();
 
         return view('pedidos.index',compact('pedidos'));

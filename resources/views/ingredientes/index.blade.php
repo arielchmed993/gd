@@ -7,6 +7,10 @@
     <tr>
         <th>Id</th>
         <th>Nombre</th>
+        <th>UM</th>
+        <th>Precio</th>
+        <th>Cant</th>
+        <th>Precio Unitario</th>
         <th>Acciones</th>
     </tr>
     </thead>
@@ -14,7 +18,11 @@
     @foreach ($ingredientes as $ingrediente)
     <tr>
         <td>{{$ingrediente->id}}</td>
-        <td>{{$ingrediente->nomb}}</td>
+        <td>{{$ingrediente->nombI}}</td>
+        <td>{{$ingrediente->UM}}</td>
+        <td>{{$ingrediente->precio}}</td>
+        <td>{{$ingrediente->cant}}</td>
+        <td>{{$ingrediente->precioU}}</td>
         <td>
         <a href="{{route('ingredientes.show',['ingrediente'=>$ingrediente->id])}}">Ver más...</a>
         </td>

@@ -21,8 +21,11 @@ class recetasController extends Controller
     {
                
         $recetas = DB::table('recetas')
-        ->join('productos', 'productos.receta_id', '=', 'recetas.id')      
-        ->select('productos.id','productos.nomb','recetas.prep')
+        ->join('productos', 'productos.receta_id', '=', 'recetas.id')  
+        ->join('ingredientes_recetas', 'ingredientes_recetas.receta_id', '=', 'recetas.id')
+        ->join('ingredientes', 'ingredientes.id', '=', 'ingredientes_recetas.ingrediente_id')        
+        ->select('productos.id','productos.nomb','recetas.prep','ingredientes_recetas.cant','ingredientes_recetas.precio','ingredientes.nombI')
+        ->orderBy('productos.id','asc')
         ->paginate(7);
         //->get();
 

@@ -32,7 +32,8 @@ class ProductoTableSeeder extends Seeder
             $producto->nomb=$nomb;
             $producto->receta_id=$i;
             $producto->save();
-            $i+=5;
+            //Coincidir con la cantidad de recetas            
+            $i++;
         }
         
     }

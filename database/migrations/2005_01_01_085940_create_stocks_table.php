@@ -22,7 +22,7 @@ class CreateStocksTable extends Migration
         Schema::create('ingredientes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('nomb');
+            $table->string('nombI');
             $table->string('UM');
             $table->decimal('precio',8,2);
           

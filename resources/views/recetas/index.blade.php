@@ -8,6 +8,9 @@
         <th>Id</th>
         <th>Nombre</th>
         <th>Preparación</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Ingredientes</th>
         <th>Acciones</th>
     </tr>
     </thead>
@@ -17,6 +20,9 @@
        <td>{{$receta->id}}</td>
         <td>{{$receta->nomb}}</td>
         <td>{{$receta->prep}}</td>
+        <td>{{$receta->cant}}</td>
+        <td>{{$receta->precio}}</td>
+        <td>{{$receta->nombI}}</td>
         <td>
         <a href="{{route('recetas.show',['receta'=>$receta->id])}}">Ver más...</a>
         </td>
@@ -35,6 +41,7 @@
 <a href="{{ route('productos.index') }}" class="btn btn-warning">Productos</a><-
 <a href="{{ route('ingredientes.index') }}" class="btn btn-warning">Ingredientes</a>
 <a href="{{ route('stocks.index') }}" class="btn btn-warning">Stocks</a>
+<a href="{{ route('ingredientes_recetas.index') }}" class="btn btn-warning">Costo por Recetas</a>  
 
 
 @endsection

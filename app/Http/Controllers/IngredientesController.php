@@ -45,12 +45,20 @@ class ingredientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
         $ingrediente=new ingrediente();
+
         $ingrediente->nomb=$request->get('nomb');
         $ingrediente->UM=$request->get('UM');
         $ingrediente->precio=$request->get('precio');
-        $ingrediente->stock_id=$request->get('stock_id');        
+        $ingrediente->cant=$request->get('cant');
+       
+        //Calculo de precio unitario
+        $c=$ingrediente->cant;
+        $p=$ingrediente->precio;
+        $ingrediente->precioU=$ingrediente->precioUnitario($p,$c);        
+        $ingrediente->stock_id=$request->get('stock_id');  
+
         $ingrediente->save();
         return redirect()->route('ingredientes.show',['ingrediente'=>$ingrediente->id]);
     }
@@ -93,12 +101,18 @@ class ingredientesController extends Controller
     {
         //
         $ingrediente=ingrediente::where('id',$id)->first();
+
         $ingrediente->nomb=$request->get('nomb');
         $ingrediente->UM=$request->get('UM');
         $ingrediente->precio=$request->get('precio');
+        $ingrediente->cant=$request->get('cant');
+       
+        //Calculo de precio unitario
+        $c=$ingrediente->cant;
+        $p=$ingrediente->precio;
+        $ingrediente->precioU=$ingrediente->precioUnitario($p,$c);        
         $ingrediente->stock_id=$request->get('stock_id');  
-        $ingrediente->save();
-        
+        $ingrediente->save();        
         
         return redirect()->route('ingredientes.show',$ingrediente);
        // return 'saved';
